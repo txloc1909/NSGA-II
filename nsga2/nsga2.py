@@ -8,6 +8,7 @@ from .solutions import GASolution
 
 
 class NSGA2Solution(GASolution, ABC):
+    """ Abstract base class for multi-objective GA solution, or NSGA2's solution """
 
     @abstractmethod
     def dominate(self, another: 'NSGA2Solution'):
@@ -16,6 +17,10 @@ class NSGA2Solution(GASolution, ABC):
 
 @dataclass
 class NonDominatedSortItem(object):
+    """ Wrapper class around NSGA2Solution
+        Allow an immutable NSGA2Solution to have states.
+        These states are used in order to perform fast non-dominated sort.
+    """
     __slots__ = ('solution', 'n_dominated', 'dominating_set')
     solution: NSGA2Solution
     n_dominated: int
@@ -136,7 +141,6 @@ class NSGA2:
     def reproduce(self, current_pop) -> List[NSGA2Solution]:
         offsprings_pop: List[NSGA2Solution] = []
 
-        # while len(offsprings_pop) < self.population_size:
         for _ in range(self.population_size):
             o1, o2 = self.do_crossover(current_pop)
             if o1 is not None and o2 is not None:

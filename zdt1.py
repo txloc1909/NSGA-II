@@ -10,6 +10,7 @@ from operators import linear_crossover, gaussian_mutation, dominance_operator
 
 
 class ZDT1Solution(NSGA2Solution, MonoRepresentationSolution):
+    """ Solution for ZDT1 problem, solved using NSGA-II """
     n_variables: int = 10  # default value
 
     @classmethod

@@ -3,6 +3,18 @@ from copy import deepcopy
 
 
 class GASolution(ABC):
+    """ Abstract base class for Genetic Algorithm solution
+
+        A solution has three essential elements:
+        * Genotype: gene representation of solution. Used in genetic operators (crossover, mutate,...)
+        * Phenotype: problem-specific representation of solution. Determine solution's objective value
+        * Fitness: the objective value
+
+        A solution instance should be immutable. This means when a solution is created,
+        it already has three elements above figured out, and doesn't change throughout its lifetime.
+
+        This abstract base class allows implementing a custom genotype-phenotype mapping.
+    """
     __slots__ = ('__genotype', '__phenotype', '__fitness')
 
     def __init__(self, genotype, phenotype):
@@ -66,6 +78,11 @@ class GASolution(ABC):
 
 
 class MonoRepresentationSolution(GASolution, ABC):
+    """ Abstract base class for solution
+        which its genotype and phenotype are identical
+
+        Created in order to reduce boilerplate code.
+    """
 
     @classmethod
     def genotype_to_phenotype(cls, genotype):
