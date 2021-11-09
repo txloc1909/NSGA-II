@@ -97,7 +97,7 @@ def crowding_distance_sorting(population: List[NSGA2Solution]) -> List[NSGA2Solu
 class NSGA2:
 
     def __init__(self,
-                 solution_type: NSGA2Solution,
+                 solution_type: type(NSGA2Solution),
                  population_size: int,
                  n_generations: int,
                  crossover_rate: float,
