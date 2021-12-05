@@ -7,7 +7,7 @@ def dominance_operator(x1: np.ndarray, x2: np.ndarray, larger_better=True) -> bo
     diff = (x1 - x2) if larger_better else (x2 - x1)
 
     # (x1 is no worse in all objective) && (x1 is strictly better in at least one objective)
-    return np.all(diff >= 0) & np.any(diff > 0)
+    return (diff >= 0).all() & (diff > 0).any()
 
 
 def linear_crossover(x1: np.ndarray,
