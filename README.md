@@ -4,7 +4,7 @@ NSGA-II implementation to solve multi-objective optimization problem.
 
 ### Environment
 ```shell
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Solving ZDT1 using NSGA-II
