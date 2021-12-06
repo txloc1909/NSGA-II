@@ -45,6 +45,10 @@ class ZDT1Solution(NSGA2Solution, MonoRepresentationSolution):
     def dominate(self, another: NSGA2Solution):
         return dominance_operator(self.fitness, another.fitness, larger_better=False)
 
+    @property
+    def fitness(self):
+        return np.array(super(ZDT1Solution, self)._fitness)
+
 
 if __name__ == '__main__':
     random.seed(42)
