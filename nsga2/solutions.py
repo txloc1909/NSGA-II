@@ -15,12 +15,12 @@ class GASolution(ABC):
 
         This abstract base class allows implementing a custom genotype-phenotype mapping.
     """
-    __slots__ = ('__genotype', '__phenotype', '__fitness')
+    __slots__ = ('_genotype', '_phenotype', '_fitness')
 
     def __init__(self, genotype, phenotype):
-        self.__genotype = genotype
-        self.__phenotype = phenotype
-        self.__fitness = self.calculate_fitness(self.__phenotype)
+        self._genotype = genotype
+        self._phenotype = phenotype
+        self._fitness = self.calculate_fitness(self._phenotype)
 
     @classmethod
     @abstractmethod
@@ -66,15 +66,15 @@ class GASolution(ABC):
 
     @property
     def genotype(self):
-        return deepcopy(self.__genotype)
+        return deepcopy(self._genotype)
 
     @property
     def phenotype(self):
-        return deepcopy(self.__phenotype)
+        return deepcopy(self._phenotype)
 
     @property
     def fitness(self):
-        return deepcopy(self.__fitness)
+        return deepcopy(self._fitness)
 
 
 class MonoRepresentationSolution(GASolution, ABC):
