@@ -1,7 +1,9 @@
 import random
 import numpy as np
+from numba import njit
 
 
+@njit()
 def dominance_operator(x1: np.ndarray, x2: np.ndarray, larger_better=True) -> bool:
     """ Return whether x1 dominate x2 """
     diff = (x1 - x2) if larger_better else (x2 - x1)
